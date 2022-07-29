@@ -38,11 +38,11 @@ public class SiteController {
     /**
      * Метод регистрации сайта
      *
-     * @param body
-     * @return
+     * @param body Map
+     * @return ResponseEntity
      */
     @PostMapping("/registration")
-    public ResponseEntity<?> registration(@RequestBody Map<String, String> body) {
+    public ResponseEntity<Map<String, String>> registration(@RequestBody Map<String, String> body) {
         LOG.info("Registration site={}", body.toString());
         String login = body.get("site");
         Optional<Site> siteRegister = this.sites.findSiteByLogin(login);
@@ -52,9 +52,8 @@ public class SiteController {
             newSite.setRegistration(true);
             this.sites.save(newSite);
         }
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(new LinkedHashMap<String, String>() {{
+        return ResponseEntity.ok()
+                .body(new HashMap<String, String>() {{
                     put("registration", String.valueOf(newSite.isRegistration()));
                     put("login", newSite.getLogin());
                     put("password", password);

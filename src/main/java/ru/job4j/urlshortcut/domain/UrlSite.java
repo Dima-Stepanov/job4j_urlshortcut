@@ -20,14 +20,16 @@ public class UrlSite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique = true, nullable = false)
     private String url;
+    @Column(unique = true, nullable = false)
     private String code;
     @ManyToOne
     @JoinColumn(name = "site_id", nullable = false)
     private Site site;
     private int total;
 
-    public static UrlSite of(String url, String code, Site site, int total) {
+    public static UrlSite of(String url, String code, Site site) {
         UrlSite urlSite = new UrlSite();
         urlSite.url = url;
         urlSite.code = code;
