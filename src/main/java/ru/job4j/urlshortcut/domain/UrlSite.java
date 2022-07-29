@@ -1,6 +1,7 @@
 package ru.job4j.urlshortcut.domain;
 
 
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
@@ -13,10 +14,16 @@ import java.util.Objects;
  * @author Dmitry Stepanov, user Dmitry
  * @since 28.07.2022
  */
+@Entity
+@Table(name = "urls")
 public class UrlSite {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String url;
     private String code;
+    @ManyToOne
+    @JoinColumn(name = "site_id", nullable = false)
     private Site site;
     private int total;
 

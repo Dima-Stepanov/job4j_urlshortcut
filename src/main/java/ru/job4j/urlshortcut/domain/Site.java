@@ -1,5 +1,6 @@
 package ru.job4j.urlshortcut.domain;
 
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
@@ -12,9 +13,15 @@ import java.util.Objects;
  * @author Dmitry Stepanov, user Dmitry
  * @since 28.07.2022
  */
+@Entity
+@Table(name = "sites")
 public class Site {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique = true, nullable = false)
     private String login;
+    @Column(nullable = false)
     private String password;
     private boolean registration;
 
