@@ -2,6 +2,7 @@ package ru.job4j.urlshortcut.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 /**
@@ -21,6 +22,7 @@ public class UrlSite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(unique = true, nullable = false)
+    @NotBlank(message = "Url must be not empty")
     private String url;
     @Column(unique = true, nullable = false)
     private String code;

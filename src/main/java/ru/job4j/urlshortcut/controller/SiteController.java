@@ -4,13 +4,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.job4j.urlshortcut.config.CodeGenerate;
 import ru.job4j.urlshortcut.domain.Site;
+import ru.job4j.urlshortcut.domain.SiteDTO;
 import ru.job4j.urlshortcut.service.SiteService;
 
+import javax.validation.Valid;
 import java.util.*;
 
 /**
@@ -29,8 +32,11 @@ public class SiteController {
     private static final int PASS_LENGTH = 5;
     private final SiteService sites;
     private final CodeGenerate codeGenerate;
+    private final PasswordEncoder encoder;
 
-    public SiteController(SiteService sites, CodeGenerate codeGenerate) {
+    public SiteController(SiteService sites, CodeGenerate codeGenerate,
+                          PasswordEncoder encoder) {
+        this.encoder = encoder;
         this.sites = sites;
         this.codeGenerate = codeGenerate;
     }
@@ -38,24 +44,19 @@ public class SiteController {
     /**
      * Метод регистрации сайта
      *
-     * @param body Map
+     * @param siteDTO SiteDTO
      * @return ResponseEntity
      */
     @PostMapping("/registration")
-    public ResponseEntity<Map<String, String>> registration(@RequestBody Map<String, String> body) {
-        LOG.info("Registration site={}", body.toString());
-        String login = body.get("site");
-        Optional<Site> siteRegister = this.sites.findSiteByLogin(login);
+    public ResponseEntity<Map<String, String>> registration(@Valid @RequestBody SiteDTO siteDTO) {
+        LOG.info("Registration site={}", siteDTO);
         String password = codeGenerate.generate(PASS_LENGTH);
-        Site newSite = Site.of(login, password, false);
-        if (siteRegister.isEmpty()) {
-            newSite.setRegistration(true);
-            this.sites.save(newSite);
-        }
+        Site site = Site.of(siteDTO.getSite(), encoder.encode(password), true);
+        Site finalSite = this.sites.save(site);
         return ResponseEntity.ok()
                 .body(new HashMap<String, String>() {{
-                    put("registration", String.valueOf(newSite.isRegistration()));
-                    put("login", newSite.getLogin());
+                    put("registration", String.valueOf(finalSite.isRegistration()));
+                    put("login", finalSite.getLogin());
                     put("password", password);
                 }});
     }
