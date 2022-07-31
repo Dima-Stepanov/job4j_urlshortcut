@@ -1,6 +1,7 @@
 package ru.job4j.urlshortcut.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 /**
@@ -20,8 +21,10 @@ public class Site {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(unique = true, nullable = false)
+    @NotBlank(message = "Login must be not empty")
     private String login;
     @Column(nullable = false)
+    @NotBlank(message = "Password must be not empty")
     private String password;
     private boolean registration;
 
@@ -74,12 +77,12 @@ public class Site {
             return false;
         }
         Site site = (Site) o;
-        return id == site.id;
+        return Objects.equals(login, site.login) && Objects.equals(password, site.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(login, password);
     }
 
     @Override

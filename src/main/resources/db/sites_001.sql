@@ -2,8 +2,8 @@
 create table if not exists sites
 (
     id           serial primary key,
-    login        varchar(20) not null,
-    password     varchar(20) not null,
+    login        varchar(200) not null,
+    password     varchar(200) not null,
     registration boolean default true,
     unique (login)
 )

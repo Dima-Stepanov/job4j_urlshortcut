@@ -18,6 +18,11 @@ import java.util.Optional;
  */
 @Repository
 public interface SiteRepository extends CrudRepository<Site, Integer> {
-
+    /**
+     * Возвращает учетную запись по логину
+     *
+     * @param login String model Site
+     * @return Optional
+     */
     Optional<Site> findSiteByLogin(String login);
 }
