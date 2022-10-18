@@ -8,6 +8,18 @@
 все ссылки на сайте заменяются ссылками на наш сервис.</h3>
 <h3>Сервис работает через REST API. Для реализации используется Spring Boot 2</h3>
 
+<h3>Для запуска проекта:</h3>
+<b> Описанные ниже действия актуальны для ОС Linux Ubuntu/Mint </b><br>
+1. Установите <b>docker</b> и <b>docker-compose</b>.<br>
+2. Создайте каталог <b>projects</b>. Команда <b>mkdir projects</b>. Перейдите в каталог <b>projects</b>. Команда <b>cd projects</b>.<br>
+3. Клонируйте репозиторий <b>job4j_url_shortcut</b>. Команда <b>git clone</b> https://github.com/Dima-Stepanov/job4j_url_shortcut.<br>
+4. Перейдите в каталог <b>job4j_url_shortcut</b>. Команда <b>cd job4j_url_shortcut</b>. <br>
+5. Собираем приложения. Выполняем команду <b>docker-compose build</b>.<br>
+6. Запускаем приложения в фоновом режиме <b>docker-compose up -d</b>.<br>
+7. Для остановки приложение выполните команду <b>docker-compose down</b>.<br>
+
+<h2>Описание функций приложения</h2>
+
 <h4>Общая схема модэлей приложения</h4>
 
 ![](img/sheme_dependse.jpg) <br>
