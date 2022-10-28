@@ -6,8 +6,8 @@ echo "!!!!!!!!!!!delete postgresdb-deployment!!!!!!!!!!"
 kubectl delete -f postgresdb-deployment.yml
 sleep 10
 kubectl get pods
-echo "!!!!!!!!!!!delete spring-deployment ConfigMap!!!!!!!!!!"
+echo "!!!!!!!!!!!delete postgresdb ConfigMap!!!!!!!!!!"
 kubectl delete -f postgresdb-configmap.yml
 sleep 3
-echo "!!!!!!!!!!!delete spring-deployment Secret!!!!!!!!!!"
+echo "!!!!!!!!!!!delete postgresdb Secret!!!!!!!!!!"
 kubectl delete -f postgresdb-secret.yml
