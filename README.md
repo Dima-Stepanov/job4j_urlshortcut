@@ -98,3 +98,10 @@ GET /statistic <br>
 
 <h4>Так же в приложении реализована валидация входных параметров</h4>
 <h4>для генерации паролей и кодов для ссылок реализован класс CodeGenerate</h4>
+
+
+### Контакты
+
+> email: [haoos@inbox.ru](mailto:haoos@inbox.ru) <br>
+> tl: [Dima_software](https://t.me/Dima_software) <br>
+> github.com: [Dima-Stepanov](https://github.com/Dima-Stepanov)
