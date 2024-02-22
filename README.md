@@ -1,5 +1,5 @@
-[![codecov](https://codecov.io/gh/Dima-Stepanov/job4j_url_shortcut/branch/master/graph/badge.svg?token=Qo0v6uulOf)](https://codecov.io/gh/Dima-Stepanov/job4j_url_shortcut)
-[![Java CI with Maven](https://github.com/Dima-Stepanov/job4j_url_shortcut/actions/workflows/maven.yml/badge.svg)](https://github.com/Dima-Stepanov/job4j_url_shortcut/actions/workflows/maven.yml)
+[![codecov](https://codecov.io/gh/dima-abc/job4j_url_shortcut/branch/master/graph/badge.svg?token=Qo0v6uulOf)](https://codecov.io/gh/dima-abc/job4j_url_shortcut)
+[![Java CI with Maven](https://github.com/dima-abc/job4j_url_shortcut/actions/workflows/maven.yml/badge.svg)](https://github.com/dima-abc/job4j_url_shortcut/actions/workflows/maven.yml)
 
 # Сервис - UrlShortCut
 
@@ -135,5 +135,5 @@ GET /statistic <br>
 ### Контакты
 
 > email: [haoos@inbox.ru](mailto:haoos@inbox.ru) <br>
-> tl: [Dima_software](https://t.me/Dima_software) <br>
-> github.com: [Dima-Stepanov](https://github.com/Dima-Stepanov)
+> tl: [dima_abc](https://t.me/dima_abc) <br>
+> github.com: [dima-abc](https://github.com/dima-abc)
